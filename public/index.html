@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bonx Chat</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Socket.IO client from CDN -->
+  <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- JOIN SCREEN                           -->
+  <!-- ══════════════════════════════════════ -->
+  <div id="join-screen" class="join-screen">
+    <div class="join-card">
+      <div class="join-logo">
+        <span class="logo-icon">💬</span>
+        <h1>Bonx Chat</h1>
+        <p>Real-time messaging, files, voice & more</p>
+      </div>
+      <div class="join-form">
+        <input
+          type="text"
+          id="username-input"
+          placeholder="Enter your username"
+          maxlength="20"
+          autocomplete="off"
+        />
+        <button id="join-btn" onclick="joinChat()">
+          Join Chat →
+        </button>
+      </div>
+      <p class="join-hint">Press Enter or click Join</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- CHAT APP                              -->
+  <!-- ══════════════════════════════════════ -->
+  <div id="chat-app" class="chat-app hidden">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="logo-text">💬 Bonx</span>
+        <span id="my-username" class="my-username"></span>
+      </div>
+      <div class="online-label">
+        <span class="dot green"></span> Online Users
+      </div>
+      <ul id="users-list" class="users-list"></ul>
+    </aside>
+
+    <!-- MAIN CHAT AREA -->
+    <main class="chat-main">
+
+      <!-- Top Bar -->
+      <div class="chat-topbar">
+        <div class="chat-topbar-info">
+          <span class="topbar-icon">💬</span>
+          <div>
+            <div class="topbar-title">Bonx Chat</div>
+            <div class="topbar-sub" id="topbar-status">Everyone in the room</div>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <span id="online-count" class="online-count">0 online</span>
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div id="messages" class="messages-area"></div>
+
+      <!-- Typing Indicator -->
+      <div id="typing-indicator" class="typing-indicator hidden">
+        <span id="typing-text"></span>
+        <span class="typing-dots"><span></span><span></span><span></span></span>
+      </div>
+
+      <!-- Input Bar -->
+      <div class="input-bar">
+
+        <!-- File Upload Button -->
+        <label class="icon-btn" title="Send image/video">
+          📎
+          <input
+            type="file"
+            id="file-input"
+            accept="image/*,video/*"
+            style="display:none"
+            onchange="handleFileUpload(event)"
+          />
+        </label>
+
+        <!-- Voice Record Button -->
+        <button
+          class="icon-btn"
+          id="voice-btn"
+          title="Hold to record voice"
+          onmousedown="startRecording()"
+          onmouseup="stopRecording()"
+          ontouchstart="startRecording()"
+          ontouchend="stopRecording()"
+        >🎤</button>
+
+        <!-- Text Input -->
+        <input
+          type="text"
+          id="message-input"
+          placeholder="Type a message..."
+          autocomplete="off"
+          onkeydown="handleInputKeydown(event)"
+          oninput="handleTyping()"
+        />
+
+        <!-- Send Button -->
+        <button class="send-btn" onclick="sendTextMessage()">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="white">
+            <path d="M1.101 21.757L23.8 12.028 1.101 2.3l.011 7.912 13.623 1.816-13.623 1.817-.011 7.912z"/>
+          </svg>
+        </button>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
