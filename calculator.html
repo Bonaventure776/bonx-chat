@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edu-Track - Calculator</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo">Edu -<span>Track.</span></div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="subject.html">Subjects</a>
+            <a href="calculator.html" class="active">Calculator </a>
+            <a href="notes.html">Notes </a>
+        </nav>
+    </header>
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h2>Grade Calculator</h2>
+            </div>
+        </section>
+        <section class="container">
+            <div class="stat-grid" style="margin-bottom: 32px;">
+                <div class="stat-card">
+                    <div class="stat-number" id="avg-display">--%</div>
+                    <div class="stat-label">Weighted Average</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="gpa-display">--</div>
+                    <div class="stat-label">GPA | 4.0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="grade-display">--</div>
+                    <div class="stat-label">Overall Grade</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="credits-display">--</div>
+                    <div class="stat-label">Total Credits</div>
+                </div>
+                <div class="card" style="background-color: var(--surface); padding: 32px; border-radius: var(--radius-lg); border: 2px solid var(--border); box-shadow: var(--shadow-sm);">
+                    <h3>Overall Progress</h3>
+                    <div class="progress-track">
+                        <div class="progress-bar" id="progress-bar"></div>
+                        <table id="breakdown-table" style="width: 100%; border-collapse: collapse; margin-top: 32px;">
+                            <thead>
+                                <tr style="text-align: left; border-bottom: 2px solid var(--border);">
+                                    <th style="padding: 12px;">Subject</th>
+                                    <th style="padding: 12px;">Grade</th>
+                                    <th style="padding: 12px;">Credits</th>
+                                    <th style="padding: 12px;">Weighted</th>
+                                </tr>
+                            </thead>
+                            <tbody id="calculator-body">
+                                <!-- It'll Be Filled By JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+     <footer class="footer">
+        <p>&copy; 2026 Edu-Track. All rights reserved. Level Iga-Now Tech Program Internship</p>
+    </footer>
+</body>
+
+</html>
